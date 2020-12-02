@@ -15,7 +15,7 @@ async function postSignUp(req, res){
     
         res.sendStatus(201);
     }catch(err){
-        res.sendStatus(500);
+        res.status(500).send({ error: "Erro de servidor" });
     }
     
 }
@@ -35,8 +35,7 @@ async function postSignIn(req, res){
         res.status(200).send({id: user[0].id, name: user[0].name, token});
 
     }catch(err){
-        console.log(err);
-        res.sendStatus(500);
+        res.status(500).send({ error: "Erro de servidor" });
     }
     
 
