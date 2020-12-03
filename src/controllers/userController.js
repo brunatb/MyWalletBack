@@ -41,4 +41,15 @@ async function postSignIn(req, res){
 
 }
 
-module.exports = { postSignUp, postSignIn }
+async function postSignOut(req, res){
+    try{
+        const { user } = req;
+        await sessionsRepository.deleteSession(user.id);
+
+        res.sendStatus(200);
+    }catch(err){
+        res.status(500).send({ error: "Erro de servidor" });
+    }
+}
+
+module.exports = { postSignUp, postSignIn, postSignOut }

@@ -17,7 +17,9 @@ app.post('/api/sign-in', validateSignInInputs, userController.postSignIn);
 
 app.get('/api/transactions', authenticate, transactionsController.getTransactions);
 
-app.post('/api/transactions', authenticate, transactionsController.postTransactions )
+app.post('/api/transactions', authenticate, transactionsController.postTransactions );
+
+app.post('/api/sign-out', authenticate, userController.postSignOut);
 
 const port = process.env.PORT;
 app.listen(port);

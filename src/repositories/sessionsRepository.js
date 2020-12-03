@@ -20,4 +20,8 @@ async function getToken(id){
     return result.rows[0].token;
 }
 
-module.exports = { createSession, findSession, getToken }
+async function deleteSession(id){
+    const result = await connection.query('DELETE FROM sessions WHERE "userId" = $1', [id]);
+}
+
+module.exports = { createSession, findSession, getToken, deleteSession }
