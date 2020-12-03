@@ -16,4 +16,10 @@ async function findUserById(id){
     return result.rows[0];
 }
 
-module.exports = {  create, findUserByEmail, findUserById }
+async function updateUserAmount(id, amount, value) {
+    const number = parseFloat(amount.replace('$', '').replace(',', ''));
+    const newAmount = number + value;
+    await connection.query('UPDATE users SET amount = $1 WHERE id = $2', [newAmount, id]);
+}
+
+module.exports = {  create, findUserByEmail, findUserById, updateUserAmount }

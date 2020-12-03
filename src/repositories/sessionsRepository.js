@@ -14,4 +14,10 @@ async function findSession(token){
     return result.rows[0];
 }
 
-module.exports = { createSession, findSession }
+async function getToken(id){
+    const result = await connection.query('SELECT token FROM sessions WHERE "userId" = $1', [id]);
+
+    return result.rows[0].token;
+}
+
+module.exports = { createSession, findSession, getToken }

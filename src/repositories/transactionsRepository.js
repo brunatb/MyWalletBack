@@ -5,4 +5,9 @@ async function findTransactions(id){
     return result.rows;
 }
 
-module.exports = { findTransactions }
+async function createTransaction(id, body) {
+    const { value, description } = body;
+    await connection.query('INSERT INTO transactions (description, value, "userId") VALUES ($1, $2, $3)', [description, value, id]);
+}
+
+module.exports = { findTransactions, createTransaction }

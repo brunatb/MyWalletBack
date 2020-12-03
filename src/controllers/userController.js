@@ -32,7 +32,7 @@ async function postSignIn(req, res){
         
         const token = await sessionsRepository.createSession(user[0]);
 
-        res.status(200).send({id: user[0].id, name: user[0].name, token});
+        res.status(200).send({id: user[0].id, name: user[0].name, amount: user[0].amount, token});
 
     }catch(err){
         res.status(500).send({ error: "Erro de servidor" });
