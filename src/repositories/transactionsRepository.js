@@ -8,8 +8,7 @@ async function findTransactions(id){
 
 async function createTransaction(id, body) {
     let { value, description } = body;
-    value = stripHtml(value).result;
-    description = stripHtml(description).result
+    description = stripHtml(description).result;
     await connection.query('INSERT INTO transactions (description, value, "userId") VALUES ($1, $2, $3)', [description, value, id]);
 }
 
