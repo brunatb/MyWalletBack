@@ -35,6 +35,7 @@ async function postSignIn(req, res){
         res.status(200).send({id: user[0].id, name: user[0].name, amount: user[0].amount, token});
 
     }catch(err){
+        console.log(err);
         res.status(500).send({ error: "Erro de servidor" });
     }
     

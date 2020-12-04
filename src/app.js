@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const express = require('express');
 const cors = require("cors");
 const { validateSignUpInputs } = require('./middlewares/signUpValidation');
@@ -21,5 +21,4 @@ app.post('/api/transactions', authenticate, transactionsController.postTransacti
 
 app.post('/api/sign-out', authenticate, userController.postSignOut);
 
-const port = process.env.PORT;
-app.listen(port);
+module.exports = app;

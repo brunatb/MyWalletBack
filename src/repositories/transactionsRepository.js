@@ -1,7 +1,7 @@
 const connection = require("../database");
 
 async function findTransactions(id){
-    const result = await connection.query('SELECT * FROM transactions WHERE "userId" = $1', [id]);
+    const result = await connection.query('SELECT date, description, value, id FROM transactions WHERE "userId" = $1', [id]);
     return result.rows;
 }
 

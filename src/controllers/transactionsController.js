@@ -23,7 +23,7 @@ async function postTransactions(req, res){
         const result = await userRepository.findUserByEmail(user.email);
         const token = await sessionsRepository.getToken(user.id);
         
-        res.status(200).send({id: user.id, name: user.name, amount: result[0].amount, token});
+        res.status(201).send({id: user.id, name: user.name, amount: result[0].amount, token});
         
     }catch(err){
         console.log(err);
