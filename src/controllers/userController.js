@@ -15,6 +15,7 @@ async function postSignUp(req, res){
     
         res.sendStatus(201);
     }catch(err){
+        console.log(err);
         res.status(500).send({ error: "Erro de servidor" });
     }
     
